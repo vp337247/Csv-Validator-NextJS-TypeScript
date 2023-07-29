@@ -57,6 +57,7 @@ export interface PageHelperProps {
 }
 
 export const usePageHelper = (): PageHelperProps => {
+  //State variables
   const [csvData, setCsvData] = useState<any[]>([]);
   const [validationErrors, setValidationErrors] = useState<
     { name: boolean; phone: boolean; nameErrorMessage: string; phoneErrorMessage: string }[]
