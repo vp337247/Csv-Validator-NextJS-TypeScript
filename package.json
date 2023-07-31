@@ -15,6 +15,7 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
+    "file-saver": "^2.0.5",
     "next": "13.4.12",
     "papaparse": "^5.4.1",
     "postcss": "8.4.27",
@@ -24,6 +25,7 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@types/file-saver": "^2.0.5",
     "@types/papaparse": "^5.3.7"
   }
 }

@@ -71,6 +71,7 @@ export default function Home() {
             {/* Table Header */}
             <thead>
               <tr>
+                <th className="border border-blue-300 p-2">Index</th>
                 <th className="border border-blue-300 p-2">Name</th>
                 <th className="border border-blue-300 p-2">Phone Number</th>
                 <th className="border border-blue-300 p-2">Address</th>
@@ -81,9 +82,10 @@ export default function Home() {
               {/* Table Rows */}
               {csvData.map((row, index) => (
                 <tr key={index}>
+                  <td className={`border hover:bg-blue-900 border-blue-300  p-2 `}>{index + 1}</td>
                   <td className={`border hover:bg-blue-900 border-blue-300  p-2 `}>
                     {row.Name}
-                    {!validationErrors[index].name && (
+                    {!validationErrors[index].name && (//checking not null
                       <div className="text-red-500">{validationErrors[index].nameErrorMessage}</div>
                     )}
                   </td>

@@ -1,5 +1,6 @@
 'use client'
 // pageHelpers.tsx
+import { saveAs } from 'file-saver';
 import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
 
@@ -151,6 +152,7 @@ export const usePageHelper = (): PageHelperProps => {
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];
     if (file) {
+      //file error handling event
       setIsFileUploaded(true);
       const fileType = file.type;
       if (fileType !== 'text/csv') {
@@ -159,7 +161,7 @@ export const usePageHelper = (): PageHelperProps => {
         return;
       }
       setShowErrorMessage(false);
-
+      //file reading event
       const reader = new FileReader();
       reader.onload = (event) => {
         const csvText = event.target?.result as string;
@@ -228,12 +230,7 @@ export const usePageHelper = (): PageHelperProps => {
   const handleDownload = () => {
     const csvContent = Papa.unparse(csvData);
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', 'edited_data.csv');
-    document.body.appendChild(link);
-    link.click();
+    saveAs(blob, 'edited_data.csv');
   };
 
   // Function to handle the submit button click
